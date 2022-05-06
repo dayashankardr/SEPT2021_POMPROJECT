@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import com.qa.opencart.util.Constants;
 import com.qa.opencart.util.ElementUtil;
 
+import io.qameta.allure.Description;
+
 public class LoginPage {
 	
 	//1. Declare private WebDriver
@@ -29,6 +31,7 @@ public class LoginPage {
 	}
 		
 	//4. Page Actions
+	@Description("Get login Page title")
 	public String getLoginPageTitle()	{
 		return eleUtil.doGetTitle(Constants.LOGIN_PAGE_TITLE, Constants.DEFAULT_TIME_OUT);
 	}
