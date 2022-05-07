@@ -66,7 +66,7 @@ public class RegisterAccountTest extends BaseTest{
 	  RandomGenerator.getEmailId(), telephone, password, subscribe)); }
 	 
 	
-	@Test(priority = 9, enabled=false)
+	@Test(priority = 9, enabled=true)
 	public void registerAccountSuccessUrlTest() {
 		Assert.assertTrue(registerAccountPage.doRegisterAccountSuccessUrl());
 				
