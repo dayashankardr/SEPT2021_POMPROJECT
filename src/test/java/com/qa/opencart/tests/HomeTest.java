@@ -1,13 +1,18 @@
 package com.qa.opencart.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.opencart.util.Constants;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+
 public class HomeTest extends BaseTest{
 	
+	@Description("Home Page Title Test")
+	@Severity(SeverityLevel.MINOR)
 	@Test(priority = 1)
 	public void HomePageTitleTest() {
 		String actualHomePageTitle = homePage.getHomePageGetTitle();
