@@ -5,15 +5,12 @@ import org.openqa.selenium.WebDriver;
 
 import com.qa.opencart.util.Constants;
 import com.qa.opencart.util.ElementUtil;
-import com.qa.opencart.util.RandomGenerator;
 
 public class RegisterAccountPage {
 	
-	private WebDriver driver;
 	private ElementUtil eleUtil;
 	
 	public RegisterAccountPage(WebDriver driver)	{
-		this.driver = driver;
 		eleUtil = new ElementUtil(driver);
 	}
 
