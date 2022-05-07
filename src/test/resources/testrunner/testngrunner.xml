@@ -9,7 +9,7 @@
 		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer" />
 	</listeners>
 	
-<!-- <test name="OpenCart Home Page Test">
+	<test name="OpenCart Home Page Test">
 		<classes>
 			<class name="com.qa.opencart.tests.HomeTest" />
 		</classes>
@@ -21,7 +21,7 @@
 			<class name="com.qa.opencart.tests.LoginTest" />
 		</classes>
 
-	</test>  -->	
+	</test> 
 
 	<test name="OpenCart Account Page Test">
 		<classes>
@@ -30,12 +30,12 @@
 
 	</test>
 	
-	<!--  <test name="OpenCart Register Account Page Test">
+	 <test name="OpenCart Register Account Page Test">
 		<classes>
 			<class name="com.qa.opencart.tests.RegisterAccountTest" />
 		</classes>
 
-	</test> -->
+	</test>
 
 
 </suite>
