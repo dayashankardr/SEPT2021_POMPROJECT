@@ -54,8 +54,6 @@ public class RegisterAccountTest extends BaseTest{
 		Assert.assertEquals(registerAccountPage.newsLetterLbl(), Constants.NEWS_LETTER_LABEL);	
 	}
 	
-	
-	
 	  @DataProvider public Object[][] getRegisterTestDateFromExcel() { return
 	  ExcelUtil.getExcelTestData(Constants.EXCEL_REGISTER_TEST_DATE); }
 	  

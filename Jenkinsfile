@@ -1,55 +1,66 @@
-pipeline{
-    
+pipeline 
+{
     agent any
     
-    stages{
-        
-        stage("Build"){
-            steps{
-                echo("Build the Project")
-            }
+    tools{
+    	maven 'maven'
         }
-        
-        stage("Run UTs"){
-            steps{
-                echo("Run Unit level test cases")
+
+    stages 
+    {
+        stage('Build') 
+        {
+            steps 
+            {
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-        }
-        
-         stage("Deploy to dev"){
-            steps{
-                echo("Dev deployement")
-            }
-        }
-        
-        stage("Deploy to QA"){
-            steps{
-                echo("QA deployement")
-            }
-        }
-        
-        stage("Run Automation Reg Test"){
-            steps{
-                echo("Run Automation Reg Test")
-            }
-        }
-        
-        stage("Deploy to Stage"){
-            steps{
-                echo("Stage deployement")
-            }
-        }
-        
-        stage("Deploy to Prod"){
-            steps{
-                echo("Prod deployement")
+            post 
+            {
+                success 
+                {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
         }
         
         
+        stage('Regression Automation Test') {
+            steps {
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    git 'https://github.com/naveenanimation20/Sept2021POM.git'
+                    sh "mvn clean install"
+                }
+            }
+        }
+                
+     
+        stage('Publish Allure Reports') {
+           steps {
+                script {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: '/allure-results']]
+                    ])
+                }
+            }
+        }
+        
+        
+        stage('Publish Extent Report'){
+            steps{
+                     publishHTML([allowMissing: false,
+                                  alwaysLinkToLastBuild: false, 
+                                  keepAll: false, 
+                                  reportDir: 'build', 
+                                  reportFiles: 'TestExecutionReport.html', 
+                                  reportName: 'HTML Extent Report', 
+                                  reportTitles: ''])
+            }
+        }
     }
-    
-    
-    
-    
 }
