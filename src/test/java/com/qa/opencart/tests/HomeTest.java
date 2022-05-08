@@ -20,6 +20,8 @@ public class HomeTest extends BaseTest{
 		Assert.assertEquals(actualHomePageTitle, Constants.HOME_PAGE_TITLE);	
 	}
 	
+	@Description("Home Page Header name Test")
+	@Severity(SeverityLevel.MINOR)
 	@Test(priority = 2)
 	public void homePageHeaderTest() {
 		String homePageHeader = homePage.getHomePageHeader();
