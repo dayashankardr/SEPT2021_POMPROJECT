@@ -30,7 +30,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/dayashankardr/SEPT2021_POMPROJECT.git'
-                    sh "mvn clean install"
+                    bat "mvn clean install"
                 }
             }
         }
