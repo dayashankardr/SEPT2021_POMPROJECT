@@ -21,7 +21,6 @@ public class HomeTest extends BaseTest{
 	}
 	
 	@Description("Home Page Header name Test")
-	@Severity(SeverityLevel.MINOR)
 	@Test(priority = 2)
 	public void homePageHeaderTest() {
 		String homePageHeader = homePage.getHomePageHeader();
